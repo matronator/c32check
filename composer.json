@@ -1,0 +1,24 @@
+{
+    "name": "matronator/c32check",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Matronator\\C32check\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Matronator",
+            "email": "5470780+matronator@users.noreply.github.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "brick/math": "^0.12.1",
+        "tuupola/base58": "^2.1"
+    },
+    "require-dev": {
+        "nette/tester": "^2.5"
+    }
+}
