@@ -1,6 +1,7 @@
 {
     "name": "matronator/c32check",
     "type": "library",
+    "description": "PHP library for encoding and decoding C32Check addresses",
     "license": "MIT",
     "autoload": {
         "psr-4": {
