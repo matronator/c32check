@@ -12,38 +12,38 @@ class Address
     public const TESTNET = 'testnet';
 
     public const NETWORKS = [
-        static::MAINNET => static::MAINNET,
-        static::TESTNET => static::TESTNET,
+        self::MAINNET => self::MAINNET,
+        self::TESTNET => self::TESTNET,
     ];
 
     public const P2PKH = 'p2pkh';
     public const P2SH = 'p2sh';
 
     public const VERSIONS = [
-        static::MAINNET => [
-            static::P2PKH => 22, // 'P'
-            static::P2SH => 20, // 'M'
+        self::MAINNET => [
+            self::P2PKH => 22, // 'P'
+            self::P2SH => 20, // 'M'
         ],
-        static::TESTNET => [
-            static::P2PKH => 26, // 'T'
-            static::P2SH => 21, // 'N'
+        self::TESTNET => [
+            self::P2PKH => 26, // 'T'
+            self::P2SH => 21, // 'N'
         ],
     ];
 
     // address conversion : bitcoin to stacks
     public const ADDR_BITCOIN_TO_STACKS = [
-        0 => static::VERSIONS[static::MAINNET][static::P2PKH],
-        5 => static::VERSIONS[static::MAINNET][static::P2SH],
-        111 => static::VERSIONS[static::TESTNET][static::P2PKH],
-        196 => static::VERSIONS[static::TESTNET][static::P2SH],
+        0 => self::VERSIONS[self::MAINNET][self::P2PKH],
+        5 => self::VERSIONS[self::MAINNET][self::P2SH],
+        111 => self::VERSIONS[self::TESTNET][self::P2PKH],
+        196 => self::VERSIONS[self::TESTNET][self::P2SH],
     ];
 
     // address conversion : stacks to bitcoin
     public const ADDR_STACKS_TO_BITCOIN = [
-        static::VERSIONS[static::MAINNET][static::P2PKH] => 0,
-        static::VERSIONS[static::MAINNET][static::P2SH] => 5,
-        static::VERSIONS[static::TESTNET][static::P2PKH] => 111,
-        static::VERSIONS[static::TESTNET][static::P2SH] => 196,
+        self::VERSIONS[self::MAINNET][self::P2PKH] => 0,
+        self::VERSIONS[self::MAINNET][self::P2SH] => 5,
+        self::VERSIONS[self::TESTNET][self::P2PKH] => 111,
+        self::VERSIONS[self::TESTNET][self::P2SH] => 196,
     ];
 
     public Base58 $base58Check;
@@ -126,49 +126,51 @@ class Address
      * @return string the c32 address with the given version number (or the
      *   semantically-equivalent c32 version number, if not given)
      */
-    public function b58ToC32(string $b58check, int $version = -1): string
-    {
-        $addrInfo = $this->base58Check->decode($b58check);
-        $hash160String = bin2hex($addrInfo['data']);
-        $addrVersion = hexdec(bin2hex($addrInfo['prefix']));
-        $stacksVersion = $version;
+    // public function b58ToC32(string $b58check, int $version = -1): string
+    // {
+    //     $addrInfo = Encoding::b58decode($b58check);
+    //     $hash160String = Utils::bytesToHex($addrInfo['data']);
+    //     $addrVersion = hexdec(Utils::bytesToHex($addrInfo['prefix']));
+    //     $stacksVersion = $version;
     
-        if ($version < 0) {
-            $stacksVersion = $addrVersion;
-            if (isset(static::ADDR_BITCOIN_TO_STACKS[$addrVersion])) {
-                $stacksVersion = static::ADDR_BITCOIN_TO_STACKS[$addrVersion];
-            }
-        }
+    //     if ($version < 0) {
+    //         $stacksVersion = $addrVersion;
+    //         if (isset(static::ADDR_BITCOIN_TO_STACKS[$addrVersion])) {
+    //             $stacksVersion = static::ADDR_BITCOIN_TO_STACKS[$addrVersion];
+    //         }
+    //     }
     
-        return $this->c32address($stacksVersion, $hash160String);
-    }
+    //     return $this->c32address($stacksVersion, $hash160String);
+    // }
     
-    /**
-     * Convert a c32check address to a base58check address.
-     * @param string $c32string - the c32check address
-     * @param int $version - the version number, if not inferred from the address
-     * @return string the base58 address with the given version number (or the
-     *    semantically-equivalent bitcoin version number, if not given)
-     */
-    public function c32ToB58(string $c32string, int $version = -1): string
-    {
-        $addrInfo = $this->c32addressDecode($c32string);
-        $stacksVersion = $addrInfo[0];
-        $hash160String = $addrInfo[1];
-        $bitcoinVersion = $version;
-    
-        if ($version < 0) {
-            $bitcoinVersion = $stacksVersion;
-            if (isset(static::ADDR_STACKS_TO_BITCOIN[$stacksVersion])) {
-                $bitcoinVersion = static::ADDR_STACKS_TO_BITCOIN[$stacksVersion];
-            }
-        }
-    
-        $prefix = dechex($bitcoinVersion);
-        if (strlen($prefix) === 1) {
-            $prefix = '0' . $prefix;
-        }
+    // /**
+    //  * Convert a c32check address to a base58check address.
+    //  * @param string $c32string - the c32check address
+    //  * @param int $version - the version number, if not inferred from the address
+    //  * @return string the base58 address with the given version number (or the
+    //  *    semantically-equivalent bitcoin version number, if not given)
+    //  */
+    // public function c32ToB58(string $c32string, int $version = -1): string
+    // {
+    //     $addrInfo = $this->c32addressDecode($c32string);
+    //     $stacksVersion = $addrInfo[0];
+    //     $hash160String = $addrInfo[1];
 
-        return $this->base58Check->encode($hash160String, $prefix);
-    }
+    //     $bitcoinVersion = null;
+    //     if ($version < 0) {
+    //         $bitcoinVersion = $stacksVersion;
+    //         if (isset(static::ADDR_STACKS_TO_BITCOIN[$stacksVersion])) {
+    //             $bitcoinVersion = static::ADDR_STACKS_TO_BITCOIN[$stacksVersion];
+    //         }
+    //     } else {
+    //         $bitcoinVersion = $version;
+    //     }
+
+    //     $prefix = dechex($bitcoinVersion);
+    //     if (strlen($prefix) === 1) {
+    //         $prefix = '0' . $prefix;
+    //     }
+
+    //     return $this->base58Check->encode($hash160String, $prefix);
+    // }
 }

@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Matronator\C32check;
 
+use Tuupola\Base58;
+
 class Encoding
 {
 
@@ -163,5 +165,24 @@ class Encoding
         }
 
         return $hexStr;
+    }
+
+    public static function b58decode(string $string): array
+    {
+        $base58 = new Base58(['characters' => Base58::BITCOIN, 'check' => true]);
+        $bytes = Utils::hexToBytes(bin2hex($base58->decode($string)));
+        $prefixBytes = array_slice($bytes, 0, 1, true);
+        $dataBytes = array_slice($bytes, 1, -4, true);
+
+        $merged = $prefixBytes;
+        array_push($merged, ...$dataBytes);
+
+        $checksum = Utils::sha256(Utils::sha256($merged));
+        foreach (array_slice($bytes, -4) as $index => $check) {
+            if ($check !== $checksum[$index]) {
+                throw new \RuntimeException('Checksum mismatch! Expected ' . $checksum[$index] . ', got ' . $check . ' at index ' . $index);
+            }
+        }
+        return [ 'prefix' => $prefixBytes, 'data' => $dataBytes ];
     }
 }

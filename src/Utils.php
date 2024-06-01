@@ -6,7 +6,8 @@ namespace Matronator\C32check;
 
 class Utils
 {
-    public static function hexToBytes(string $hex) {
+    public static function hexToBytes(string $hex): array
+    {
         // Remove any leading 0x if present
         if (strpos($hex, '0x') === 0) {
             $hex = substr($hex, 2);
