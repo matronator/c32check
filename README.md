@@ -1,6 +1,6 @@
 # C32Check
 
-PHP library for encoding and decoding C32 addresses which are used on the Stacks blockchain. It provides functionality to convert between base-32 encoded strings and their underlying byte representations, including checksum verification.
+PHP library for encoding and decoding C32 addresses which are used on the Stacks blockchain. It provides functionality to convert between base-58 encoded strings and their underlying byte representations, including checksum verification.
 
 ## Requirements
 
