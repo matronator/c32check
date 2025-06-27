@@ -46,3 +46,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [Bitcoin Wiki](https://en.bitcoin.it/wiki/Technical_background_of_version_1_Bitcoin_addresses)
 - [Base58](https://github.com/tuupola/base58)
 - [Stacks](https://stacks.co/)
+- [c32check in TypeScript](https://github.com/stacks-network/c32check)
