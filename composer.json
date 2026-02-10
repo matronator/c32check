@@ -23,6 +23,6 @@
         "tuupola/base58": "^2.1"
     },
     "require-dev": {
-        "phpunit/phpunit": "^12.0"
+        "phpunit/phpunit": "^13.0"
     }
 }
