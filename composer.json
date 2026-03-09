@@ -19,7 +19,7 @@
     },
     "minimum-stability": "stable",
     "require": {
-        "brick/math": "^0.15.0",
+        "brick/math": "^0.16.0",
         "tuupola/base58": "^2.1"
     },
     "require-dev": {
