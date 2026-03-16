@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "brick/math",
-            "version": "0.16.0",
+            "version": "0.16.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/brick/math.git",
-                "reference": "f9abcbd068bac8bfa571e8a8a3abbb171163fca1"
+                "reference": "78454885381afa242dcecaf2dd2476784901d3ef"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/brick/math/zipball/f9abcbd068bac8bfa571e8a8a3abbb171163fca1",
-                "reference": "f9abcbd068bac8bfa571e8a8a3abbb171163fca1",
+                "url": "https://api.github.com/repos/brick/math/zipball/78454885381afa242dcecaf2dd2476784901d3ef",
+                "reference": "78454885381afa242dcecaf2dd2476784901d3ef",
                 "shasum": ""
             },
             "require": {
@@ -55,7 +55,7 @@
             ],
             "support": {
                 "issues": "https://github.com/brick/math/issues",
-                "source": "https://github.com/brick/math/tree/0.16.0"
+                "source": "https://github.com/brick/math/tree/0.16.2"
             },
             "funding": [
                 {
@@ -63,7 +63,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-03-06T13:17:27+00:00"
+            "time": "2026-03-15T00:45:41+00:00"
         },
         {
             "name": "tuupola/base58",
@@ -1159,16 +1159,16 @@
         },
         {
             "name": "sebastian/environment",
-            "version": "9.0.0",
+            "version": "9.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/environment.git",
-                "reference": "bb64d08145b021b67d5f253308a498b73ab0461e"
+                "reference": "e26e9a944bd9d27b3a38a82fc2093d440951bfbe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/environment/zipball/bb64d08145b021b67d5f253308a498b73ab0461e",
-                "reference": "bb64d08145b021b67d5f253308a498b73ab0461e",
+                "url": "https://api.github.com/repos/sebastianbergmann/environment/zipball/e26e9a944bd9d27b3a38a82fc2093d440951bfbe",
+                "reference": "e26e9a944bd9d27b3a38a82fc2093d440951bfbe",
                 "shasum": ""
             },
             "require": {
@@ -1211,7 +1211,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/environment/issues",
                 "security": "https://github.com/sebastianbergmann/environment/security/policy",
-                "source": "https://github.com/sebastianbergmann/environment/tree/9.0.0"
+                "source": "https://github.com/sebastianbergmann/environment/tree/9.0.1"
             },
             "funding": [
                 {
@@ -1231,7 +1231,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-02-06T04:43:29+00:00"
+            "time": "2026-03-15T07:13:02+00:00"
         },
         {
             "name": "sebastian/exporter",
